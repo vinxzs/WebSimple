@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="Stylesheet"/>
+    <title>WEBSITE LATIHAN</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="renderUlang()" id="home">Home</a>
+            <a onclick="darkMode()" id="mode">Mode</a>
+        </nav>
+        <h1>Tes tes</h1>
+        <p class="info" id="info"></p>
+    </div>
+    <!-- Initializing Function -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById("info");
+        let mode = document.getElementById("mode");
+        let home = document.getElementById("home");
+
+        const darkLimiter = 5;
+        const darkLimit = 4;
+        let darkCounter = 0;
+        let darkRemainingleft;
+
+        function darkMode() {
+            if(darkCounter > darkLimit){
+                info.textContent = "FITUR ANDA SUDAH HABIS"
+                mode.style.display = "none";
+                home.textContent = "Restart";
+                return;
+            }
+            darkCounter +=1;
+            darkRemainingleft = darkLimiter - darkCounter;
+
+            //render info
+            info.textContent = `Darkmode dipakai sebanyak ${darkCounter}x, Tersisa ${darkRemainingleft}`
+
+            body.classList.toggle("dark");
+        }
+        function renderUlang() {
+            location.reload();  
+        }
+    </script>
+</body>
+</html>
